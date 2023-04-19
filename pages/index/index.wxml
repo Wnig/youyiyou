@@ -1,0 +1,44 @@
+<map class="map {{isShow ? 'map-top': ''}}" id="map" scale='14' show-location  markers="{{markers}}" latitude="{{defLat}}" longitude="{{defLon}}" bindmarkertap='markertap' bindregionchange='scaleMap'></map>
+<cover-image  bindtap="moveToLocation" mode='aspectFill' class='img-cio {{isShow ? "img-cio-up" : ""}}' src='../../images/icons/dtdw@3x.png'></cover-image>
+
+<cover-view class='open {{isShow ? "open_display": ""}}'>
+  <cover-view class='down-con'>
+    <cover-view class='down' bindtap='openShow'>
+      <cover-image mode='aspectFill'  src='../../images/icons/xl@3x.png'></cover-image>
+    </cover-view>
+  </cover-view>    
+  <!-- <cover-view  data-id="{{venueList.id}}" bindtap='enterDetail'  class='mask'>
+    <cover-view class='mask-con'>
+      <cover-image bindtap="moveToLocation" mode='aspectFill' class='img' src='{{venueList.viewCoverImage}}'></cover-image>
+        <cover-view class='content'>
+          <cover-view class="name text-1-eclips">{{venueList.name}}</cover-view>
+          <cover-view class='item-act'>￥{{venueList.consume}}</cover-view>
+          <cover-view class='item-addr'>
+            <cover-view class="item-name text-1-eclips">位于{{venueList.address}}</cover-view>
+            <cover-view class="item-dis">{{distance}}km</cover-view>
+        </cover-view>
+      </cover-view>
+    </cover-view>
+  </cover-view> -->
+</cover-view> 
+
+<view class='navigator {{isShow ? "nav-top": ""}}'>
+  <navigator  target="miniProgram" hover-class="none" open-type="navigate" app-id="{{venueList.appId}}" path="pages/index/index" version="trial">
+    <view  data-id="{{venueList.id}}"  class='mask'>
+      <view class='mask-con'>
+        <image bindtap="moveToLocation" mode='aspectFill' class='img' src='{{venueList.viewCoverImage}}'></image>
+          <view class='content'>
+            <view class="name text-1-eclips">{{venueList.name}}</view>
+            <view class='item-act'>6720游记，31204活动</view>
+            <view class='item-addr'>
+              <view class="item-name text-1-eclips">位于{{venueList.address}}</view>
+              <view class="item-dis">{{distance}}km</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </navigator>
+</view>
+  
+  
+

@@ -1,0 +1,72 @@
+<!-- 热门推荐 -->
+<block wx:if='{{productList.length}}'>
+  <view class='commoduty'>  
+    <view class='container'>
+      <block wx:for="{{productList}}" wx:key="item">
+          <view wx:if="{{item.businessId == item.appid}}"  bindtap='enterDetail' class='list clearfix {{productList.length-1 == index? "" : "xpk-1px-b"}}' data-id='{{item.id}}'>
+            <view class='pic-discr'>
+              <image lazy-load="{{true}}" mode='aspectFill' src="{{item.listCoverImage}}"></image>
+              <text>{{item.departure == '多地出发' ? item.departure: item.departure + '出发'}}</text>
+            </view>
+            <view class='info-con'>
+              <view class='info-cons'>
+                <text class='info-tit text-2-eclips'>{{item.name}}</text>
+                <text class='info-time'>{{item.minDepartureDate}} 至 {{item.maxDepartureDate}}出发</text>
+                <view class='info-price'>
+                  <text class='price'>￥{{item.realPrice}}</text>
+                  <!-- <text wx:if="{{item.less != ''}}" class='reduce'>立省{{item.less}}元</text> -->
+                </view>
+              </view>
+            </view>
+          </view>
+          <view wx:else>
+            <block wx:if="{{isLogin}}">
+              <navigator class='list clearfix {{productList.length-1 == index? "" : "xpk-1px-b"}}'  hover-class="none"  data-commodity='{{item}}' target="miniProgram" open-type="navigate" app-id="{{item.appid}}" path="{{'pages/details/details?id='+item.id+'&com='+item.urlParam}}" extra-data=""
+              version="trial">
+                <view class='pic-discr'>
+                  <image lazy-load="{{true}}" mode='aspectFill' src="{{item.listCoverImage}}"></image>
+                  <text>{{item.departure == '多地出发' ? item.departure: item.departure + '出发'}}</text>
+                </view>
+                <view class='info-con'>
+                  <view class='info-cons'>
+                    <text class='info-tit text-2-eclips'>{{item.name}}</text>
+                    <text class='info-time'>{{item.minDepartureDate}} 至 {{item.maxDepartureDate}}出发</text>
+                    <view class='info-price'>
+                      <text class='price'>￥{{item.realPrice}}</text>
+                      <!-- <text wx:if="{{item.less != ''}}" class='reduce'>立省{{item.less}}元</text> -->
+                    </view>
+                  </view>
+                </view>
+              </navigator>
+            </block>
+            <block wx:else>
+              <view bindtap="inLogin" class='list clearfix {{productList.length-1 == index? "" : "xpk-1px-b"}}' >
+                <view class='pic-discr'>
+                  <image lazy-load="{{true}}" mode='aspectFill' src="{{item.listCoverImage}}"></image>
+                  <text>{{item.departure == '多地出发' ? item.departure: item.departure + '出发'}}</text>
+                </view>
+                <view class='info-con'>
+                  <view class='info-cons'>
+                    <text class='info-tit text-2-eclips'>{{item.name}}</text>
+                    <text class='info-time'>{{item.minDepartureDate}} 至 {{item.maxDepartureDate}}出发</text>
+                    <view class='info-price'>
+                      <text class='price'>￥{{item.realPrice}}</text>
+                      <!-- <text wx:if="{{item.less != ''}}" class='reduce'>立省{{item.less}}元</text> -->
+                    </view>
+                  </view>
+                </view>
+              </view>
+            </block>
+          </view>
+      </block>
+    </view>
+  </view>
+
+  <view wx:if="{{!hasMore}}" class='no-more'>已经到底了~</view>
+</block>
+  
+
+  <view wx:else class='no-render'>
+    <image src='../../images/icons/ej_kym@3x.svg' mode='aspectFit' class='icon'></image>
+    <text class='text'>暂无数据</text>
+  </view>
